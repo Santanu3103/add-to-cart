@@ -1,0 +1,23 @@
+.navbar{
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #fff;
+    background-color: #000000;
+  }
+  .navbar-brand{
+    color: #fff; 
+  }
+  
+  .navbar{
+    border-bottom:1px solid #fff;
+  }
+  
+  .navbar-brand:hover{
+    color: #fff;  
+  }
+  
+  
+  .link{
+   color: #fff;
+  }
