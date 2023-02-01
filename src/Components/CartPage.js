@@ -60,7 +60,7 @@ const CartPage = () => {
         products.map((product,index)=>{
           return (        
           <ListGroup className="list-group-flush  " >
-          <ListGroup.Item className='list-inside '><span>{index+1}. {product.title}</span>    <span> ${product.price}</span></ListGroup.Item>   
+          <ListGroup.Item className='list-inside total-bar '><span>{index+1}. {product.title}</span>    <span> ${product.price}</span></ListGroup.Item>   
           </ListGroup>    
           )
         })
@@ -68,7 +68,7 @@ const CartPage = () => {
       <hr className="line"/>
              <ListGroup className="list-group-flush">
            
-            <ListGroup.Item className='list-inside total-bar'>Total : ${products.reduce((total, item)=>total+(item.price),0)} </ListGroup.Item>
+            <ListGroup.Item className='list-inside total-bar'><span>Total : </span><span> ${products.reduce((total, item)=>total+(item.price),0)} </span></ListGroup.Item>
            
             <button variant="outline-dark" size="lg"
                 onClick={() => {dispatch(clear());} }
