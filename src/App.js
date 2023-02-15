@@ -22,6 +22,7 @@ function App() {
    
     return false;
 }
+// arrayIsEmpty(products)
   return (
     <>
     <Navbar/>
@@ -29,7 +30,7 @@ function App() {
     <Route  path="/" element={<HomePage />} />
     <Route path='/cart'
       element={
-       <ProtectedRoute isEmpty={arrayIsEmpty(products)}>
+       <ProtectedRoute isEmpty={false}>
        <CartPage/>
        </ProtectedRoute>
        }

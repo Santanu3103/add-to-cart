@@ -29,9 +29,9 @@ const HomePage = () => {
         <Container>
         <Row style={{gap:".5px"}}>
         {
-          products.map(product=>{
+          products.map((product,index)=>{
             return (
-              <Col xs >
+              <Col xs key={index}>
             <div className='container cards'>
             <Card style={{height:'400px', width: '18rem'}}>
             <Card.Img variant="top" src={product.images[0]}   style={{height:'300px'}}/>     

@@ -9,7 +9,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const CartPage = () => {
-  const [msg,setmsg]=useState("")
   const dispatch = useDispatch();
   const handleRemove = (productId) => {
     dispatch(remove(productId));
@@ -20,16 +19,14 @@ const CartPage = () => {
    
     <div className="row justify-content-center">
       <h1  className="row justify-content-center ">My Cart</h1>
-    <h1 >{msg}</h1>
-      <div className='list'>
-    
+      <div className='list'>  
       <Container>
       <Row>
       {
-        products.map(product=>{
+        products.map((product,index)=>{
           return (
             
-            <Col >
+            <Col key={index}>
           <div className='container cards'>
           <Card style={{height:'400px', width: '18rem'}}>
             <Card.Img variant="top" src={product.images[0]}   style={{height:'300px'}}/>      
@@ -58,19 +55,27 @@ const CartPage = () => {
         <h3 className=" justify-content-center p-3"> Checkout List</h3>
       {
         products.map((product,index)=>{
-          return (        
-          <ListGroup className="list-group-flush  " >
-          <ListGroup.Item className='list-inside total-bar '><span>{index+1}. {product.title}</span>    <span> ${product.price}</span></ListGroup.Item>   
+          return (         
+          <ListGroup key={index} className="list-group-flush  " >
+          <ListGroup.Item className='list-inside total-bar '>
+          <span> {product.count}#. {product.title}</span>
+          <span>${product.price}</span>
+          </ListGroup.Item>   
           </ListGroup>    
           )
         })
       }
       <hr className="line"/>
-             <ListGroup className="list-group-flush">
-           
-            <ListGroup.Item className='list-inside total-bar'><span>Total : </span><span> ${products.reduce((total, item)=>total+(item.price),0)} </span></ListGroup.Item>
-           
-            <button variant="outline-dark" size="lg"
+             <ListGroup className="list-group-flush">    
+            <ListGroup.Item className='list-inside total-bar'>
+           <span> {products.reduce((total, item)=>total+(item.count),0)}# Total : </span>
+            <span>
+            ${products.reduce((total, item)=>total+(item.price*item.count),0)} </span>
+            </ListGroup.Item>
+                       
+            <button 
+                variant="outline-dark" 
+                size="lg"
                 onClick={() => {dispatch(clear());} }
                 className="btn2"
                 >
